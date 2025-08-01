@@ -1,6 +1,8 @@
 // src/App.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import './index.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -17,7 +19,10 @@ import UniversityRegister from './pages/UniversityRegister';
 const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Navbar always on top */}
       <Navbar />
+
+      {/* Main Content Area */}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -29,8 +34,13 @@ const App = () => {
           <Route path="/college/:id" element={<CollegePage />} />
           <Route path="/student-register" element={<StudentRegister />} />
           <Route path="/university-register" element={<UniversityRegister />} />
+
+          {/* Optional: 404 Page */}
+          <Route path="*" element={<div className="p-6 text-center text-red-600">Page Not Found</div>} />
         </Routes>
       </main>
+
+      {/* Footer always at bottom */}
       <Footer />
     </div>
   );
