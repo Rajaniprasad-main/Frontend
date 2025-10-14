@@ -40,7 +40,7 @@ import HeroSection from './pages/university/HeroSection.jsx';
 import Coaching from './pages/university/Coaching.jsx';
 import ScholarshipDetails from './pages/university/ScholarshipDetails.jsx';
 import Applynow from './pages/university/Applynow.jsx';
-import CareerEdu from './pages/university/careeredu.jsx';
+import CareerEdu from './pages/university/CareerEdu.jsx';
 import About from './components/Abtnv.jsx';
 import ScholarForm from './pages/Scholarform.jsx';
 
