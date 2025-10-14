@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -8,22 +8,25 @@ import {
   faBookOpen,
   faGraduationCap,
   faQuestionCircle,
-  faUserPlus,
+  faUser,
+  faChalkboardTeacher, // Added for Courses
 } from '@fortawesome/free-solid-svg-icons';
 
 const activeClass =
   'text-[#3656E5] border-b-2 border-[#3656E5] font-semibold';
-
 const inactiveClass =
-  'text-gray-700 hover:text-[#3656E5]';
+  'text-gray-800 hover:text-[#3656E5]';
 
 const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
-    <nav className="bg-white shadow-sm px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-      <h1 className="text-2xl font-extrabold text-blue-700 tracking-tight">
+    <nav className="bg-gray-100 shadow-sm py-4  flex justify-between items-center sticky top-0 z-50 w-full ">
+      <h1 className="text-2xl font-extrabold text-gray-700 tracking-tight ml-6">
         🎓 University Hub
       </h1>
-      <div className="flex gap-6 text-sm items-center">
+
+      <div className="flex gap-6 text-sm items-center relative mr-6">
         <NavLink
           to="/"
           end
@@ -33,6 +36,7 @@ const Navbar = () => {
         >
           <FontAwesomeIcon icon={faHome} /> Home
         </NavLink>
+
         <NavLink
           to="/colleges"
           className={({ isActive }) =>
@@ -41,6 +45,16 @@ const Navbar = () => {
         >
           <FontAwesomeIcon icon={faUniversity} /> Colleges
         </NavLink>
+
+           <NavLink
+          to="/Privacy"
+          className={({ isActive }) =>
+            `flex items-center gap-1 ${isActive ? activeClass : inactiveClass}`
+          }
+        >
+          <FontAwesomeIcon icon={faUniversity} /> Privacy
+        </NavLink>
+
         <NavLink
           to="/university-register"
           className={({ isActive }) =>
@@ -49,46 +63,91 @@ const Navbar = () => {
         >
           <FontAwesomeIcon icon={faUniversity} /> University Register
         </NavLink>
+
         <NavLink
-          to="/exams"
+          to="/ExamAt"
           className={({ isActive }) =>
             `flex items-center gap-1 ${isActive ? activeClass : inactiveClass}`
           }
         >
           <FontAwesomeIcon icon={faBookOpen} /> Exams
         </NavLink>
+
         <NavLink
-          to="/scholarships"
+          to="/courses"
           className={({ isActive }) =>
             `flex items-center gap-1 ${isActive ? activeClass : inactiveClass}`
           }
         >
-          <FontAwesomeIcon icon={faGraduationCap} /> Scholarships
+          <FontAwesomeIcon icon={faChalkboardTeacher} /> Courses
         </NavLink>
-        <NavLink
-          to="/qa"
+          <NavLink
+          to="/about"
           className={({ isActive }) =>
             `flex items-center gap-1 ${isActive ? activeClass : inactiveClass}`
           }
         >
-          <FontAwesomeIcon icon={faQuestionCircle} /> Q&A
+          <FontAwesomeIcon icon={faChalkboardTeacher} /> About
         </NavLink>
+
         <NavLink
-          to="/student-register"
+          to="/Scholarform"
           className={({ isActive }) =>
-            `flex items-center gap-1 px-3 py-1 rounded-md text-sm font-medium ${
-              isActive
-                ? 'bg-[#3656E5] text-white border-b-2 border-white'
-                : 'bg-blue-600 text-white hover:bg-blue-700'
-            }`
+            `flex items-center gap-1 ${isActive ? activeClass : inactiveClass}`
           }
         >
-          <FontAwesomeIcon icon={faUserPlus} className="mr-1" />
-          Register
+          <FontAwesomeIcon icon={faGraduationCap} /> ScholarshipForm
         </NavLink>
+          <NavLink
+          to="/NewsFeed"
+          className={({ isActive }) =>
+            `flex items-center gap-1 ${isActive ? activeClass : inactiveClass}`
+          }
+        >
+          <FontAwesomeIcon icon={faGraduationCap} /> News&Feeds
+        </NavLink>
+
+        <NavLink
+          to="/Contactus"
+          className={({ isActive }) =>
+            `flex items-center gap-1 ${isActive ? activeClass : inactiveClass}`
+          }
+        >
+          <FontAwesomeIcon icon={faQuestionCircle} /> Contact Us
+        </NavLink>
+
+        {/* User Icon Button with Dropdown */}
+        <div className="relative">
+          <button
+            onClick={() => setShowMenu((prev) => !prev)}
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+          >
+            <FontAwesomeIcon icon={faUser} />
+          </button>
+
+          {showMenu && (
+            <div className="absolute right-0 mt-2 w-32 bg-white border rounded-md shadow-lg">
+              <NavLink
+                to="/Student-login"
+                className="block px-4 py-2 text-sm text-blue-700 hover:bg-gray-100"
+                onClick={() => setShowMenu(false)}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/Student-register"
+                className="block px-4 py-2 text-sm text-blue-700 hover:bg-gray-100"
+                onClick={() => setShowMenu(false)}
+              >
+                Signup
+              </NavLink>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );
 };
+
 
 export default Navbar;
