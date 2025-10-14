@@ -42,7 +42,7 @@ import ScholarshipDetails from './pages/university/ScholarshipDetails.jsx';
 import Applynow from './pages/university/Applynow.jsx';
 import CareerEdu from './pages/university/CareerEdu.jsx';
 import About from './components/Abtnv.jsx';
-import ScholarForm from './pages/Scholarform.jsx';
+import ScholarForm from './pages/ScholarForm.jsx';
 
 
 
