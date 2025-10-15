@@ -11,8 +11,8 @@ import Home from './pages/Home';
 import Colleges from './pages/Colleges';
 import Exams from './pages/Neet.jsx';
 import Scholarships from './pages/Scholarships';
-import ContactUs from './components/Contactus.jsx';
-import Privacy from './components/Privacy.jsx';
+import ContactUs from './components/Contactus';
+import Privacy from './components/Privacy';
 
 import CourseRecommender from './pages/CourseRecommender';
 import CollegePage from './pages/CollegePage';
