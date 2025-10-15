@@ -6,13 +6,22 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
 
-  build: {
-    // Optional: increase chunk size warning limit
-    chunkSizeWarningLimit: 1000,
+  server: {
+    cors: true, // ✅ Allow CORS during local dev
+    proxy: {
+      // ✅ Change "/api" to match your backend route prefix
+      "/api": {
+        target: "http://localhost:5000", // your backend URL
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 
+  build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        // Split vendor (library) code into separate chunks
         manualChunks: {
           react: ["react", "react-dom", "react-router-dom"],
           icons: ["react-icons"],
